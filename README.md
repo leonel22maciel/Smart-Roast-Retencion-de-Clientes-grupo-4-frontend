@@ -1,7 +1,5 @@
 # SmartClub
 
-Sistema de fidelización para clientes.
-
 ## Integrantes
 - Santiago
 - Leonel
