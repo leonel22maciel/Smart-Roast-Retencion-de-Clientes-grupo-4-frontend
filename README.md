@@ -1,15 +1,14 @@
-# SmartClub
+# SmartClub - Frontend
 
 ## Integrantes
-- Santiago
-- Leonel
-- Martin
-- Gabriel
+Santiago  
+Leonel  
+Martín  
+Gabriel  
 
 ## Descripción
-SmartClub es una plataforma donde los usuarios pueden sumar puntos con sus compras y desbloquear beneficios exclusivos.
+Frontend de SmartClub encargado de la interfaz visual de la plataforma, donde los usuarios pueden consultar sus puntos y beneficios.
 
 ## Tecnologías utilizadas
-- HTML
-- CSS
-
+HTML  
+CSS
