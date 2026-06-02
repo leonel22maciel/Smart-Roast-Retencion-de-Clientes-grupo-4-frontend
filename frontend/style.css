@@ -108,3 +108,31 @@ article{
 .card h3{
     margin-bottom: 10px;
 }
+
+.basico{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #c68b59;
+    margin-bottom: 15px;
+}
+
+.card ul{
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.card ul li{
+    margin: 10px 0;
+}
+
+.premium{
+    border: 3px solid #c68b59;
+}
+
+
+.testimonials{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
