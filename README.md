@@ -12,3 +12,4 @@ Frontend de SmartClub encargado de la interfaz visual de la plataforma, donde lo
 ## Tecnologías utilizadas
 HTML  
 CSS
+.
