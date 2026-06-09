@@ -1,9 +1,9 @@
+/* --- TU CÓDIGO ORIGINAL --- */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 
 body{
     font-family: Arial, sans-serif;
@@ -11,7 +11,6 @@ body{
     background-color: #f8f5f2;
     color: #333;
 }
-
 
 header{
     background: linear-gradient(rgba(78,52,46,0.55), rgba(78,52,46,0.55)), url('https://images.unsplash.com/photo-1512568400610-62da28bc8a13?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGNhZiVDMyVBOXxlbnwwfHwwfHx8MA%3D%3D') center/cover no-repeat;
@@ -30,7 +29,6 @@ header{
     margin: 0 auto 20px;
 }
 
-
 .btn{
     display: inline-block;
     background: #c68b59;
@@ -44,7 +42,6 @@ header{
 .btn:hover{
     background: #a66a3f;
 }
-
 
 nav{
     background: #3e2723;
@@ -67,7 +64,6 @@ nav ul li a:hover{
     background: #5d4037;
 }
 
-
 section,
 aside{
     padding: 50px 20px;
@@ -87,7 +83,6 @@ article{
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-
 
 .pricing{
     display: flex;
@@ -129,7 +124,6 @@ article{
     border: 3px solid #c68b59;
 }
 
-
 .testimonials{
     display: flex;
     gap: 20px;
@@ -144,7 +138,6 @@ article{
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-
 .faq-item{
     background: white;
     padding: 20px;
@@ -152,7 +145,6 @@ article{
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-
 
 aside{
     background: #ede0d4;
@@ -173,7 +165,6 @@ footer h2{
     margin-bottom: 15px;
 }
 
-
 @media (max-width: 768px){
     .pricing,
     .testimonials{
@@ -184,4 +175,40 @@ footer h2{
     nav ul{
         flex-direction: column;
     }
+}
+
+/* --- LO NUEVO PARA LA TABLA DE CAFÉS --- */
+
+.tabla-contenedor {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow-x: auto; /* Para que no se rompa en celular */
+}
+
+.tabla-cafes {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.tabla-cafes th {
+    padding: 12px;
+    border-bottom: 2px solid #c68b59;
+    color: #4e342e;
+}
+
+.tabla-cafes td {
+    padding: 15px 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.precio-celda {
+    font-weight: bold;
+    color: #c68b59;
+}
+
+.tabla-cafes tr:hover {
+    background-color: #fdfaf7;
 }
