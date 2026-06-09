@@ -212,3 +212,25 @@ footer h2{
 .tabla-cafes tr:hover {
     background-color: #fdfaf7;
 }
+.premium {
+    position: relative;
+    overflow: hidden;
+}
+
+.ribbon {
+    position: absolute;
+    top: 20px;
+    left: -55px;
+    width: 220px;
+    text-align: center;
+    background: linear-gradient(45deg, #d4a017, #f1c40f);
+    color: #fff;
+    padding: 10px 0;
+    font-size: 0.80rem;
+    font-weight: 705;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transform: rotate(-45deg);
+    box-shadow: 0 4px 10px rgba(0,0,0,.2);
+    z-index: 10;
+}
