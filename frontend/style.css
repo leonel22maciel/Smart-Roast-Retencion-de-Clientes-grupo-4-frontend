@@ -273,3 +273,36 @@ footer h2{
     transform: translateY(-4px) scale(1.08);
     box-shadow: 0 10px 25px rgba(0,0,0,0.35);
 }
+
+/* Auth Controls */
+.auth-controls {
+    position: fixed;
+    right: 18px;
+    top: 14px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    z-index: 30;
+}
+
+.user-name {
+    font-weight: 700;
+    color: #c68b59;
+    font-size: 15px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+#userPanel {
+    display: none;
+    align-items: center;
+    gap: 8px;
+}
+
+#userPanel.active {
+    display: flex;
+}
+
+#btnLogout {
+    background: #999;
+    padding: 6px 10px;
+}

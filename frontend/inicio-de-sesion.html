@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Inicio de sesión - SmartRoast</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;background:#f6f4f1;padding:24px}
+    .auth-box{max-width:420px;margin:36px auto;background:white;padding:20px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+    .auth-box h2{margin:0 0 12px}
+    .tabs{display:flex;gap:8px;margin-bottom:16px}
+    .tabs button{flex:1;padding:8px;border-radius:8px;border:1px solid #ddd;background:#fafafa}
+    .tabs button.active{background:#c68b59;color:white;border-color:#c68b59}
+    form{display:none}
+    form.active{display:block}
+    label{display:block;font-size:14px;margin-bottom:6px}
+    input{width:100%;padding:8px;margin-bottom:12px;border:1px solid #ddd;border-radius:6px}
+    .btn{display:inline-block;padding:8px 14px;background:#4b2e2a;color:white;border-radius:6px;text-decoration:none;border:none}
+    .small{font-size:13px;color:#666;margin-top:8px}
+  </style>
+</head>
+<body>
+  <div class="auth-box">
+    <h2>Acceder / Registrarse</h2>
+
+    <div class="tabs">
+      <button id="tabLogin" class="active">Iniciar sesión</button>
+      <button id="tabRegister">Registrarse</button>
+    </div>
+
+    <form id="loginForm" class="active">
+      <label for="loginEmail">Email</label>
+      <input id="loginEmail" type="email" required>
+      <label for="loginPassword">Contraseña</label>
+      <input id="loginPassword" type="password" required>
+      <button id="doLogin" class="btn">Ingresar</button>
+      <p class="small">¿No tenés cuenta? <a href="#" id="toRegister">Registrate</a></p>
+    </form>
+
+    <form id="registerForm">
+      <label for="registerName">Nombre</label>
+      <input id="registerName" type="text" required>
+      <label for="registerEmail">Email</label>
+      <input id="registerEmail" type="email" required>
+      <label for="registerPassword">Contraseña</label>
+      <input id="registerPassword" type="password" required>
+      <label for="registerPassword2">Repetir contraseña</label>
+      <input id="registerPassword2" type="password" required>
+      <button id="doRegister" class="btn">Crear cuenta</button>
+      <p class="small">¿Ya tenés cuenta? <a href="#" id="toLogin">Iniciar sesión</a></p>
+    </form>
+
+    <div id="authMessage" style="margin-top:12px"></div>
+  </div>
+
+<script>
+// Simple client-side "DB" using localStorage for learning/demo purposes
+const DB_KEY = 'smartroast_users';
+function getUsers(){ const s = localStorage.getItem(DB_KEY); return s ? JSON.parse(s) : []; }
+function saveUsers(users){ localStorage.setItem(DB_KEY, JSON.stringify(users)); }
+function setCurrentUser(user){ if (user) localStorage.setItem('smartroast_currentUser', JSON.stringify(user)); else localStorage.removeItem('smartroast_currentUser'); }
+
+const tabLogin = document.getElementById('tabLogin');
+const tabRegister = document.getElementById('tabRegister');
+const loginForm = document.getElementById('loginForm');
+const registerForm = document.getElementById('registerForm');
+const authMessage = document.getElementById('authMessage');
+
+function showMessage(msg, isError){ authMessage.textContent = msg; authMessage.style.color = isError ? '#b00020' : '#1b5e20'; setTimeout(()=> authMessage.textContent = '', 3500); }
+
+tabLogin.addEventListener('click', ()=>{ tabLogin.classList.add('active'); tabRegister.classList.remove('active'); loginForm.classList.add('active'); registerForm.classList.remove('active'); });
+tabRegister.addEventListener('click', ()=>{ tabRegister.classList.add('active'); tabLogin.classList.remove('active'); registerForm.classList.add('active'); loginForm.classList.remove('active'); });
+
+document.getElementById('toRegister').addEventListener('click',(e)=>{ e.preventDefault(); tabRegister.click(); });
+document.getElementById('toLogin').addEventListener('click',(e)=>{ e.preventDefault(); tabLogin.click(); });
+
+// Register
+document.getElementById('doRegister').addEventListener('click',(e)=>{
+  e.preventDefault();
+  const name = document.getElementById('registerName').value.trim();
+  const email = document.getElementById('registerEmail').value.trim();
+  const pwd = document.getElementById('registerPassword').value;
+  const pwd2 = document.getElementById('registerPassword2').value;
+  if(!name||!email||!pwd||!pwd2){ showMessage('Completa todos los campos', true); return; }
+  if(pwd.length < 4){ showMessage('La contraseña debe tener al menos 4 caracteres', true); return; }
+  if(pwd !== pwd2){ showMessage('Las contraseñas no coinciden', true); return; }
+  const users = getUsers();
+  if(users.find(u=>u.email === email)){ showMessage('Ese email ya está registrado', true); return; }
+  const newUser = { id: Date.now(), name, email, password: pwd };
+  users.push(newUser); saveUsers(users);
+  showMessage('Cuenta creada correctamente. Inicia sesión.');
+  tabLogin.click();
+});
+
+// Login
+document.getElementById('doLogin').addEventListener('click',(e)=>{
+  e.preventDefault();
+  const email = document.getElementById('loginEmail').value.trim();
+  const pwd = document.getElementById('loginPassword').value;
+  if(!email||!pwd){ showMessage('Completa todos los campos', true); return; }
+  const users = getUsers();
+  const user = users.find(u=>u.email===email);
+  if(!user){ showMessage('Email no registrado', true); return; }
+  if(user.password !== pwd){ showMessage('Contraseña incorrecta', true); return; }
+  setCurrentUser(user);
+  showMessage('Ingreso exitoso. Redirigiendo...');
+  setTimeout(()=> window.location.href = 'index.html', 1000);
+});
+</script>
+
+</body>
+</html>
