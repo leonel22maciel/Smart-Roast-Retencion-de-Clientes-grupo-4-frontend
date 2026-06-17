@@ -234,3 +234,42 @@ footer h2{
     box-shadow: 0 4px 10px rgba(0,0,0,.2);
     z-index: 10;
 }
+#btn-arriba {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+
+    width: 60px;
+    height: 60px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: linear-gradient(135deg, #c68b59, #a66a3f);
+    color: white;
+
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 60px;
+
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+
+    transition: all 0.35s ease;
+    z-index: 9999;
+}
+
+#btn-arriba.mostrar {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#btn-arriba:hover {
+    transform: translateY(-4px) scale(1.08);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
