@@ -1,4 +1,3 @@
-/* --- TU CÓDIGO ORIGINAL --- */
 *{
     margin: 0;
     padding: 0;
@@ -177,8 +176,6 @@ footer h2{
     }
 }
 
-/* --- LO NUEVO PARA LA TABLA DE CAFÉS --- */
-
 .tabla-contenedor {
     background: white;
     padding: 20px;
@@ -305,4 +302,117 @@ footer h2{
 #btnLogout {
     background: #999;
     padding: 6px 10px;
+}
+html,
+body{
+    overflow-x: hidden;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px){
+
+    header{
+        padding: 60px 15px;
+    }
+
+    .hero h1{
+        font-size: 2rem;
+    }
+
+    .hero p{
+        font-size: 1rem;
+    }
+
+    .card,
+    .testimonial{
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .auth-controls{
+        position: static;
+        justify-content: center;
+        margin: 15px 0;
+    }
+
+    #btn-arriba{
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        line-height: 50px;
+        right: 15px;
+        bottom: 15px;
+    }
+}
+
+@media (max-width: 480px){
+
+    header{
+        padding: 50px 15px;
+    }
+
+    .hero h1{
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+
+    .hero p{
+        font-size: 0.95rem;
+    }
+
+    section,
+    aside{
+        padding: 30px 15px;
+    }
+
+    nav ul li a{
+        padding: 12px;
+        text-align: center;
+    }
+
+    .card{
+        width: 100%;
+        padding: 20px;
+    }
+
+    .testimonial{
+        width: 100%;
+    }
+
+    .btn{
+        width: 100%;
+        text-align: center;
+    }
+
+    .tabla-cafes{
+        min-width: 600px;
+    }
+
+    .auth-controls{
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .user-name{
+        font-size: 14px;
+    }
+
+    #btn-arriba{
+        width: 45px;
+        height: 45px;
+        font-size: 22px;
+        line-height: 45px;
+        right: 10px;
+        bottom: 10px;
+    }
+
+    .ribbon{
+        font-size: 0.7rem;
+        width: 180px;
+        left: -45px;
+    }
 }
