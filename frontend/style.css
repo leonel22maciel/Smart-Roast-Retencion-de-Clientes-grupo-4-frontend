@@ -416,3 +416,53 @@ img{
         left: -45px;
     }
 }
+
+/* Desplegables de preguntas frecuentes y comentarios */
+.faq-item,
+.testimonial{
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.faq-item:hover,
+.testimonial:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 5px 14px rgba(0,0,0,0.14);
+}
+
+.faq-item h3,
+.testimonial h4{
+    position: relative;
+    padding-right: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.faq-item h3::after,
+.testimonial h4::after{
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #c68b59;
+    color: #fff;
+    text-align: center;
+    line-height: 24px;
+    font-weight: bold;
+}
+
+.faq-item.open-toggle h3::after,
+.testimonial.open-toggle h4::after{
+    content: "-";
+}
+
+.collapsible-body{
+    margin-top: 14px;
+}
+
+.collapsible-body[hidden]{
+    display: none;
+}

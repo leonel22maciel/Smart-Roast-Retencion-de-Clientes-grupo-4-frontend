@@ -96,17 +96,39 @@ function initSectionToggles() {
     });
 }
 
-// ITEM TOGGLES (FAQ, beneficios)
+// ITEM TOGGLES (FAQ, beneficios, comentarios)
 function initItemToggles(){
-    document.querySelectorAll('.faq-item').forEach(item => {
-        const header = item.querySelector('h3');
-        const body = item.querySelector('p');
+    function setupDisclosure(item, header, body) {
         if (!header || !body) return;
+
         body.classList.add('collapsible-body');
-        header.addEventListener('click', () => {
-            body.classList.toggle('collapsed');
-            item.classList.toggle('open-toggle');
+        body.hidden = true;
+        item.classList.add('closed-toggle');
+        item.tabIndex = 0;
+        item.style.cursor = 'pointer';
+        header.style.cursor = 'pointer';
+        header.setAttribute('role', 'button');
+        header.setAttribute('aria-expanded', 'false');
+
+        const toggleBody = () => {
+            const isClosed = body.hidden;
+            body.hidden = !isClosed;
+            item.classList.toggle('open-toggle', isClosed);
+            item.classList.toggle('closed-toggle', !isClosed);
+            header.setAttribute('aria-expanded', String(isClosed));
+        };
+
+        item.addEventListener('click', toggleBody);
+        item.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                toggleBody();
+            }
         });
+    }
+
+    document.querySelectorAll('.faq-item').forEach(item => {
+        setupDisclosure(item, item.querySelector('h3'), item.querySelector('p'));
     });
 
     document.querySelectorAll('#beneficios article').forEach(item => {
@@ -118,6 +140,10 @@ function initItemToggles(){
             body.classList.toggle('collapsed');
             item.classList.toggle('open-toggle');
         });
+    });
+
+    document.querySelectorAll('.testimonial').forEach(item => {
+        setupDisclosure(item, item.querySelector('h4'), item.querySelector('p'));
     });
 
     // Client strip -> testimonial panel
